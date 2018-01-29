@@ -2,7 +2,7 @@
 
 public class RentalCalculator {
 
-	public static double carRental(String carModel, int duration, boolean firstTimer){
+	public static double carRental(String carModel, int duration, boolean firstTimer boolean member){
 		
 		double rentalFees = 0.0;
 				
@@ -13,14 +13,30 @@ public class RentalCalculator {
 				rentalFees = 80.0*duration*0.95;
 		}
 		else { //subsequent rental 
-			if (carModel.equals("Honda Fit") && (duration > 3))
-				rentalFees = 65.0*duration*0.90;
-			else if (carModel.equals("Honda Fit") && (duration <= 3))
-				rentalFees = 65.0*duration;
-			else if (carModel.equals("Toyota Wish") && (duration > 3))
-				rentalFees = 80.0*duration*0.90;
-			else
-				rentalFees = 80.0*duration;
+			if (member)
+			 {
+		   		if (duration > 3) {
+					if (carModel.equals("Honda Fit"))
+						rentalFees = 65.0*duration*0.80;
+					else if (carModel.equals("Toyota Wish"))
+						rentalFees = 80.0*duration* 0.80;
+						}
+				else  {
+					if (carModel.equals("Honda Fit"))
+						rentalFees = 65.0*duration*0.90;
+					else if (carModel.equals("Toyota Wish"))
+						rentalFees = 80.0*duration*0.90;
+						}
+			}
+			else 
+			{
+				if (carModel.equals("Honda Fit"))
+						rentalFees = 65.0*duration;
+				else if (carModel.equals("Toyota Wish"))
+						rentalFees = 80.0*duration; 
+			}
+
+
 		}
 			
 		return rentalFees;
